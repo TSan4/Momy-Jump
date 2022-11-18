@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakablePlatf : Platform
+namespace MommyJump
 {
-    public override void PlatformAction()
+    public class BreakablePlatf : Platform
     {
-        Destroy(gameObject);
+        public override void PlatformAction()
+        {
+            Destroy(gameObject);
+        }
     }
 }

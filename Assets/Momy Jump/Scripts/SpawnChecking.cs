@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnChecking : MonoBehaviour
+namespace MommyJump
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class SpawnChecking : MonoBehaviour
     {
-        if (collision.CompareTag(GameTag.Platform.ToString()))
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            var platformCol = collision.GetComponent<Platform>();
-
-            if (!platformCol || !GameManager.Ins || !GameManager.Ins.LastPlatformSpa) return;
-
-            if(platformCol.Id == GameManager.Ins.LastPlatformSpa.Id)
+            if (collision.CompareTag(GameTag.Platform.ToString()))
             {
-                GameManager.Ins.SpawnPlatform();
+                var platformCol = collision.GetComponent<Platform>();
+
+                if (!platformCol || !GameManager.Ins || !GameManager.Ins.LastPlatformSpa) return;
+
+                if (platformCol.Id == GameManager.Ins.LastPlatformSpa.Id)
+                {
+                    GameManager.Ins.SpawnPlatform();
+                }
             }
         }
     }

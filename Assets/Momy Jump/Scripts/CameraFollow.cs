@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UDEV.EndlessGame
-{
+namespace MommyJump
+{ 
     public class CameraFollow : MonoBehaviour
     {
         public static CameraFollow Ins;

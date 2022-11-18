@@ -2,25 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundChecking : MonoBehaviour
+namespace MommyJump
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public class GroundChecking : MonoBehaviour
     {
-        if (!collision.gameObject.CompareTag(GameTag.Platform.ToString())) return;        
-
-        var platformLanded = collision.gameObject.GetComponent<Platform>();
-
-        if(!GameManager.Ins || !GameManager.Ins.player || !platformLanded) return;
-        
-        GameManager.Ins.player.PlatformLanded = platformLanded;
-        GameManager.Ins.player.jump();
-
-        if (!GameManager.Ins.IsPlatformLanded(platformLanded.Id))
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            //int randScore = Random.Range(3, 8);
-            GameManager.Ins.AddScore(1);
-            GameManager.Ins.PlatformLandedId.Add(platformLanded.Id);
+            if (!collision.gameObject.CompareTag(GameTag.Platform.ToString())) return;
+
+            var platformLanded = collision.gameObject.GetComponent<Platform>();
+
+            if (!GameManager.Ins || !GameManager.Ins.player || !platformLanded) return;
+
+            GameManager.Ins.player.PlatformLanded = platformLanded;
+            GameManager.Ins.player.jump();
+
+            if (!GameManager.Ins.IsPlatformLanded(platformLanded.Id))
+            {
+                //int randScore = Random.Range(3, 8);
+                GameManager.Ins.AddScore(1);
+                GameManager.Ins.PlatformLandedId.Add(platformLanded.Id);
+            }
+
         }
-        
     }
 }

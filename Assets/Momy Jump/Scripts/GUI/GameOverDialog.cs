@@ -4,33 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameOverDialog : Dialog
+namespace MommyJump
 {
-    public Text totalScoreTxt;
-    public Text bestScoreTxt;
-
-    public override void Show(bool isShow)
+    public class GameOverDialog : Dialog
     {
-        base.Show(isShow);
+        public Text totalScoreTxt;
+        public Text bestScoreTxt;
 
-        if(totalScoreTxt && GameManager.Ins)
-            totalScoreTxt.text = GameManager.Ins.Score.ToString();
+        public override void Show(bool isShow)
+        {
+            base.Show(isShow);
 
-        if (bestScoreTxt)
-            bestScoreTxt.text = Pref.bestScore.ToString();
-    }
+            if (totalScoreTxt && GameManager.Ins)
+                totalScoreTxt.text = GameManager.Ins.Score.ToString();
 
-    public void Replay()
-    {
-        SceneManager.sceneLoaded += OnSceneLoadedEvent;
-        SceneController.Ins.LoadCurrentScene();
-    }
+            if (bestScoreTxt)
+                bestScoreTxt.text = Pref.bestScore.ToString();
+        }
 
-    private void OnSceneLoadedEvent(Scene scene, LoadSceneMode mode)
-    {
-        if (GameManager.Ins)
-            GameManager.Ins.PlayGame();
+        public void Replay()
+        {
+            SceneManager.sceneLoaded += OnSceneLoadedEvent;
+            SceneController.Ins.LoadCurrentScene();
+        }
 
-        SceneManager.sceneLoaded -= OnSceneLoadedEvent;
+        private void OnSceneLoadedEvent(Scene scene, LoadSceneMode mode)
+        {
+            if (GameManager.Ins)
+                GameManager.Ins.PlayGame();
+
+            SceneManager.sceneLoaded -= OnSceneLoadedEvent;
+        }
     }
 }

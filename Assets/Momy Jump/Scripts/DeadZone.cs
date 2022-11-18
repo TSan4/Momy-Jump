@@ -2,27 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeadZone : MonoBehaviour
+namespace MommyJump
 {
-
-    private void OnTriggerExit2D(Collider2D collision)
+    public class DeadZone : MonoBehaviour
     {
-        if (collision.CompareTag(GameTag.Player.ToString()))
+
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            Destroy(collision.gameObject);
-            if (GameManager.Ins) 
-                GameManager.Ins.State = GameState.Gameover;
+            if (collision.CompareTag(GameTag.Player.ToString()))
+            {
+                Destroy(collision.gameObject);
+                if (GameManager.Ins)
+                    GameManager.Ins.State = GameState.Gameover;
 
-            if(GUIManager.Ins && GUIManager.Ins.gameOverDialog) 
-                GUIManager.Ins.gameOverDialog.Show(true);
+                if (GUIManager.Ins && GUIManager.Ins.gameOverDialog)
+                    GUIManager.Ins.gameOverDialog.Show(true);
 
-            if (AudioController.Ins)
-                AudioController.Ins.PlaySound(AudioController.Ins.gameover);
-        }
+                if (AudioController.Ins)
+                    AudioController.Ins.PlaySound(AudioController.Ins.gameover);
+            }
 
-        if (collision.CompareTag(GameTag.Platform.ToString()))
-        {
-            Destroy(collision.gameObject);
+            if (collision.CompareTag(GameTag.Platform.ToString()))
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

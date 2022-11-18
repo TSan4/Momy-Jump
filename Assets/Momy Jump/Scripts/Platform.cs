@@ -2,34 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+namespace MommyJump
 {
-    public Transform collectableSpawnPoint;
-
-    private int id;
-
-    protected Player player;
-    protected Rigidbody2D rb;
-
-    public int Id { get => id; set => id = value; }
-
-    protected virtual void Awake()
+    public class Platform : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        public Transform collectableSpawnPoint;
 
-    protected virtual void Start()
-    {
-        if (!GameManager.Ins) return; 
+        private int id;
 
-        player = GameManager.Ins.player;
+        protected Player player;
+        protected Rigidbody2D rb;
 
-        if(collectableSpawnPoint)
-            GameManager.Ins.SpawnCollectable(collectableSpawnPoint);
-    }
+        public int Id { get => id; set => id = value; }
 
-    public virtual void PlatformAction()
-    {
+        protected virtual void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
 
+        protected virtual void Start()
+        {
+            if (!GameManager.Ins) return;
+
+            player = GameManager.Ins.player;
+
+            if (collectableSpawnPoint)
+                GameManager.Ins.SpawnCollectable(collectableSpawnPoint);
+        }
+
+        public virtual void PlatformAction()
+        {
+
+        }
     }
 }

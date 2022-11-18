@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowCam : MonoBehaviour
+namespace MommyJump
 {
-    private Camera m_cam;
-
-    private void Awake()
+    public class FollowCam : MonoBehaviour
     {
-        m_cam = Camera.main;
-    }
+        private Camera m_cam;
 
-    private void Update()
-    {
-        transform.position = new Vector3(m_cam.transform.position.x, m_cam.transform.position.y, 0f);
+        private void Awake()
+        {
+            m_cam = Camera.main;
+        }
+
+        private void Update()
+        {
+            transform.position = new Vector3(m_cam.transform.position.x, m_cam.transform.position.y, 0f);
+        }
     }
 }

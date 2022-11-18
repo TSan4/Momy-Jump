@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Pref
+namespace MommyJump
 {
-    public static int bestScore
+    public static class Pref
     {
-        set
+        public static int bestScore
         {
-            int oldScore = PlayerPrefs.GetInt(PrefKey.BestScore.ToString(), 0);
-            if(value > oldScore || oldScore == 0)
+            set
             {
-                PlayerPrefs.SetInt(PrefKey.BestScore.ToString(), value);
+                int oldScore = PlayerPrefs.GetInt(PrefKey.BestScore.ToString(), 0);
+                if (value > oldScore || oldScore == 0)
+                {
+                    PlayerPrefs.SetInt(PrefKey.BestScore.ToString(), value);
+                }
             }
-        }
 
-        get => PlayerPrefs.GetInt(PrefKey.BestScore.ToString(),0);
+            get => PlayerPrefs.GetInt(PrefKey.BestScore.ToString(), 0);
+        }
     }
 }
+

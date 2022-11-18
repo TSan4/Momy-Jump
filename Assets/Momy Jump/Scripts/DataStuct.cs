@@ -2,31 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState
+namespace MommyJump
 {
-    Starting,
-    Playing,
-    Gameover
-}
+    public enum GameState
+    {
+        Starting,
+        Playing,
+        Gameover
+    }
 
-public enum GameTag
-{
-    Platform,
-    Player,
-    LeftCorner,
-    RightCorner,
-    Collectable
-}
+    public enum GameTag
+    {
+        Platform,
+        Player,
+        LeftCorner,
+        RightCorner,
+        Collectable
+    }
 
-public enum PrefKey
-{
-    BestScore
-}
+    public enum PrefKey
+    {
+        BestScore
+    }
 
-[System.Serializable]
-public class CollectableItem
-{
-    public Collectable collectablePrefab;
-    [Range(0,1f)]
-    public float spawnRate;
+    [System.Serializable]
+    public class CollectableItem
+    {
+        public Collectable collectablePrefab;
+        [Range(0, 1f)]
+        public float spawnRate;
+    }
 }

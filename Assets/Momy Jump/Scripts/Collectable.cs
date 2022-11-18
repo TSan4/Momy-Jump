@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+namespace MommyJump
 {
-    public int scoreBouns;
-    public GameObject explosionEffPb;
-
-    public void Trigger()
+    public class Collectable : MonoBehaviour
     {
-        if (explosionEffPb)        
-            Instantiate(explosionEffPb, transform.position, Quaternion.identity);        
+        public int scoreBouns;
+        public GameObject explosionEffPb;
 
-        Destroy(gameObject);
+        public void Trigger()
+        {
+            if (explosionEffPb)
+                Instantiate(explosionEffPb, transform.position, Quaternion.identity);
 
-        if (GameManager.Ins)        
-            GameManager.Ins.AddScore(scoreBouns);
+            Destroy(gameObject);
 
-        if (AudioController.Ins)
-            AudioController.Ins.PlaySound(AudioController.Ins.gotCollectable);
+            if (GameManager.Ins)
+                GameManager.Ins.AddScore(scoreBouns);
+
+            if (AudioController.Ins)
+                AudioController.Ins.PlaySound(AudioController.Ins.gotCollectable);
+        }
     }
 }

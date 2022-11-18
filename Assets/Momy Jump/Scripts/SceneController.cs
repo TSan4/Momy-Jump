@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : Singleton<SceneController>
+namespace MommyJump
 {
-    public override void Awake()
+    public class SceneController : Singleton<SceneController>
     {
-        MakeSingleton(false);
-    }
+        public override void Awake()
+        {
+            MakeSingleton(false);
+        }
 
-    public void LoadCurrentScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        public void LoadCurrentScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
